@@ -1,0 +1,58 @@
+﻿@page
+@model SchoolLocker.Web.Pages.Pupils.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th class="text-center">
+                @Html.DisplayNameFor(model => model.Pupils[0].Lastname)
+            </th>
+            <th class="text-center">
+                @Html.DisplayNameFor(model => model.Pupils[0].Firstname)
+            </th>
+            <th class="text-center">
+                @Html.DisplayNameFor(model => model.Pupils[0].Username)
+            </th>
+            <th class="text-center">
+                @Html.DisplayNameFor(model => model.Pupils[0].IsAdmin)
+            </th>
+            <th class="text-center">
+                @Html.DisplayNameFor(model => model.Pupils[0].RegisteredSince)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Pupils)
+        {
+            <tr>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.Lastname)
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.Firstname)
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.Username)
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.IsAdmin)
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.RegisteredSince)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.Id">Details</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,53 @@
+﻿@page
+@model SchoolLocker.Web.Pages.Bookings.LockerBookingModel
+@{
+    ViewData["Title"] = "Locker Booking";
+}
+
+<h2>Create Booking</h2>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+
+            <div class="form-group">
+                <label asp-for="Booking.Locker.Number" class="control-label"></label>
+                <input asp-for="Booking.Locker.Number" class="form-control" readonly="readonly" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Booking.PupilId" class="control-label"></label>
+                <input asp-for="CurrentUsersName" class="form-control" readonly="readonly" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Booking.From" class="control-label"></label>
+                <input asp-for="Booking.From" class="form-control" type="date" />
+                <span asp-validation-for="Booking.From" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Booking.To" class="control-label"></label>
+                <input asp-for="Booking.To" class="form-control" type="date" />
+                <span asp-validation-for="Booking.To" class="text-danger"></span>
+            </div>
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input asp-for="Booking.LockerId" type="hidden" />
+            <input asp-for="Booking.PupilId" type="hidden" />
+
+            <div class="form-group">
+                <input type="submit"
+                       value="Add Booking"
+                       class="btn btn-default"
+                       asp-page-handler="Create" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="/Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
